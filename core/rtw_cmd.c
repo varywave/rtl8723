@@ -2987,11 +2987,13 @@ static void rtw_chk_hi_queue_hdl(_adapter *padapter)
 
 	rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
 
+#ifdef CONFIG_PROC_DEBUG
 	while(_FALSE == empty && rtw_get_passing_time_ms(start) < g_wait_hiq_empty)
 	{
 		rtw_msleep_os(100);
 		rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
 	}
+#endif
 
 	if(psta_bmc->sleepq_len==0)
 	{

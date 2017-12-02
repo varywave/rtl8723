@@ -270,11 +270,13 @@ static s32 polling_fwdl_chksum(_adapter *adapter, u32 min_cnt, u32 timeout_ms)
 		goto exit;
 	}
 
+#ifdef CONFIG_PROC_DEBUG
 	if (g_fwdl_chksum_fail) {
 		DBG_871X("%s: fwdl test case: fwdl_chksum_fail\n", __func__);
 		g_fwdl_chksum_fail--;
 		goto exit;
 	}
+#endif
 
 	ret = _SUCCESS;
 
@@ -313,11 +315,13 @@ static s32 _FWFreeToGo(_adapter *adapter, u32 min_cnt, u32 timeout_ms)
 		goto exit;
 	}
 
+#ifdef CONFIG_PROC_DEBUG
 	if (g_fwdl_wintint_rdy_fail) {
 		DBG_871X("%s: fwdl test case: wintint_rdy_fail\n", __func__);
 		g_fwdl_wintint_rdy_fail--;
 		goto exit;
 	}
+#endif
 
 	ret = _SUCCESS;
 
